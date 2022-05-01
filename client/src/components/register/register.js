@@ -2,11 +2,14 @@ import React from 'react'
 import "./register.css"
 
 import { useState } from 'react'
-import { useNavigate as Navigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import  axios  from 'axios'
 
 export const Register = (props) => {
+
+    //*Router
+    const navigate = useNavigate()
 
     //* Register Variables
     let [data,setData] = useState({
@@ -32,7 +35,7 @@ export const Register = (props) => {
             console.log(data.data);
             sessionStorage.setItem("userinfo", JSON.stringify(data.data));
             // window.location.replace("/home")
-            return Navigate("/home")
+            navigate("/home")
         })
         .catch(error=>{
             setErrors(error.response.data)
